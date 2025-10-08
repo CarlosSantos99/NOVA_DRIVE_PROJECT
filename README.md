@@ -21,7 +21,7 @@ O pipeline integra **PostgreSQL**, **Airflow (na AWS EC2)**, **Snowflake**, **db
 
 A arquitetura segue o fluxo:
 
-**PostgreSQL → Airflow (EC2) → Snowflake → dbt → Looker Studio**
+**PostgreSQL → Airflow (EC2) → Snowflake → dbt → Power BI**
 
 - O **PostgreSQL** armazena os dados de origem (vendas, clientes, veículos etc).  
 - O **Airflow**, hospedado em uma **instância AWS EC2**, orquestra a extração, transformação e carga dos dados.  
@@ -271,6 +271,7 @@ data_atualizacao
 | **Snowflake**        | Data Warehouse na nuvem para armazenamento e modelagem de dados |
 | **dbt**              | Transformações, modelagem, testes e documentação dos dados no Snowflake |
 | **Power BI**         | Visualização e análise interativa dos dados modelados |
+
 
 
 
