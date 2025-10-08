@@ -30,6 +30,170 @@ A arquitetura segue o fluxo:
 - O **Power BI** apresenta os resultados em **dashboards interativos**.
 
 
+## UML
+
+- Dados em tabela unica Postgres:
+id_estados
+estado
+sigla
+id_cidades
+nome_cidade
+id_concessionarias
+nome_concessionaria
+id_clientes
+cliente
+endereco
+id_vendedores
+nome_vendedor
+id_veiculos
+nome
+tipo
+valor
+id_vendas
+valor_venda
+data_inclusao
+data_atualizacao
+data_venda
+
+- Dados em Dimenções e Fatos Snowflake:
+DIM_ESTADOS:
+id_estados (PK)
+estado
+sigla
+data_inclusao
+data_atualizacao
+
+DIM_CIDADES:
+id_cidades (PK)
+nome_cidade
+id_estados (FK para DIM_ESTADOS)
+data_inclusao
+data_atualizacao
+
+DIM_CONCESSIONARIAS:
+id_concessionarias (PK)
+nome_concessionaria
+id_cidades (FK para DIM_CIDADES)
+data_inclusao
+data_atualizacao
+
+DIM_CLIENTES:
+id_clientes (PK)
+cliente
+endereco
+id_concessionarias (FK para DIM_CONCESSIONARIAS)
+data_inclusao
+data_atualizacao
+
+DIM_VENDEDORES:
+id_vendedores (PK)
+nome_vendedor
+id_concessionarias (FK para DIM_CONCESSIONARIAS)
+data_inclusao
+data_atualizacao
+
+DIM_VEICULOS:
+id_veiculos (PK)
+nome
+tipo
+valor
+data_inclusao
+data_atualizacao
+
+FCT_VENDAS:
+id_vendas (PK)
+id_veiculos (FK para DIM_VEICULOS)
+id_concessionarias (FK para DIM_CONCESSIONARIAS)
+id_vendedores (FK para DIM_VENDEDORES)
+id_clientes (FK para DIM_CLIENTES)
+valor_venda
+data_venda
+data_inclusao
+data_atualizacao
+
+- UML do projeto:
++-----------------+
+|   DIM_ESTADOS   |
++-----------------+
+| id_estados (PK) |
+| estado          |
+| sigla           |
+| data_inclusao   |
+| data_atualizacao|
++-----------------+
+
+           1
+           |
+           | 
+           * 
++-----------------+
+|   DIM_CIDADES   |
++-----------------+
+| id_cidades (PK) |
+| nome_cidade     |
+| id_estados (FK) |
+| data_inclusao   |
+| data_atualizacao|
++-----------------+
+
+           1
+           |
+           |
+           *
++-------------------------+
+|   DIM_CONCESSIONARIAS   |
++-------------------------+
+| id_concessionarias (PK) |
+| nome_concessionaria     |
+| id_cidades (FK)         |
+| data_inclusao           |
+| data_atualizacao        |
++-------------------------+
+
+        1          1
+        |          |
+        |          |
+        *          *
++-----------------+        +-----------------+
+|   DIM_CLIENTES  |        |  DIM_VENDEDORES |
++-----------------+        +-----------------+
+| id_clientes(PK) |        | id_vendedores(PK)|
+| cliente         |        | nome_vendedor    |
+| endereco        |        | id_concessionarias(FK)|
+| id_concessionarias(FK)|   | data_inclusao   |
+| data_inclusao   |        | data_atualizacao|
+| data_atualizacao|        +-----------------+
++-----------------+
+
++-----------------+
+|   DIM_VEICULOS  |
++-----------------+
+| id_veiculos(PK) |
+| nome            |
+| tipo            |
+| valor           |
+| data_inclusao   |
+| data_atualizacao|
++-----------------+
+
+                *
+                |
+                1
++-----------------+
+|   FCT_VENDAS    |
++-----------------+
+| id_vendas (PK)  |
+| id_veiculos(FK) |
+| id_concessionarias(FK) |
+| id_vendedores(FK) |
+| id_clientes(FK) |
+| valor_venda     |
+| data_venda      |
+| data_inclusao   |
+| data_atualizacao|
++-----------------+
+
+
 ## 📝 Seções do projeto
 
 ### 1️⃣ Introdução
@@ -103,6 +267,7 @@ A arquitetura segue o fluxo:
 | **Snowflake**        | Data Warehouse na nuvem para armazenamento e modelagem de dados |
 | **dbt**              | Transformações, modelagem, testes e documentação dos dados no Snowflake |
 | **Power BI**         | Visualização e análise interativa dos dados modelados |
+
 
 
 
