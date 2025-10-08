@@ -35,11 +35,17 @@ A arquitetura segue o fluxo:
 - Dados no Postgres:
 
 TABELA: ESTADOS | Campos: id_estados, estado, sigla, data_inclusao, data_atualizacao 
-TABELA: CIDADES | Campos: id_cidades, nome_cidade, id_estados, data_inclusao, data_atualizacao 
+
+TABELA: CIDADES | Campos: id_cidades, nome_cidade, id_estados, data_inclusao, data_atualizacao
+
 TABELA: CONCESSIONARIAS | Campos: id_concessionarias, nome_concessionaria, id_cidades, data_inclusao, data_atualizacao
+
 TABELA: CLIENTES | Campos: id_clientes, cliente, endereco, id_concessionarias, data_inclusao, data_atualizacao
+
 TABELA: VENDEDORES | Campos: id_vendedores, nome_vendedor, id_concessionarias, data_inclusao, data_atualizacao
+
 TABELA: VEICULOS | Campos: id_veiculos, nome, tipo, valor, data_inclusao, data_atualizacao
+
 TABELA: VENDAS | Campos: id_vendas, id_clientes, id_vendedores, id_veiculos, valor_venda, data_venda, data_inclusao, data_atualizacao 
 
 - Dados em Dimenções e Fatos Snowflake:
@@ -98,90 +104,6 @@ valor_venda
 data_venda
 data_inclusao
 data_atualizacao
-
-- UML do projeto:
-
-+-----------------+
-|   DIM_ESTADOS   |
-+-----------------+
-| id_estados (PK) |
-| estado          |
-| sigla           |
-| data_inclusao   |
-| data_atualizacao|
-+-----------------+
-
-           1
-           |
-           | 
-           * 
-+-----------------+
-|   DIM_CIDADES   |
-+-----------------+
-| id_cidades (PK) |
-| nome_cidade     |
-| id_estados (FK) |
-| data_inclusao   |
-| data_atualizacao|
-+-----------------+
-
-           1
-           |
-           |
-           *
-+-------------------------+
-|   DIM_CONCESSIONARIAS   |
-+-------------------------+
-| id_concessionarias (PK) |
-| nome_concessionaria     |
-| id_cidades (FK)         |
-| data_inclusao           |
-| data_atualizacao        |
-+-------------------------+
-
-        1          1
-        |          |
-        |          |
-        *          *
-+-----------------+        +-----------------+
-|   DIM_CLIENTES  |        |  DIM_VENDEDORES |
-+-----------------+        +-----------------+
-| id_clientes(PK) |        | id_vendedores(PK)|
-| cliente         |        | nome_vendedor    |
-| endereco        |        | id_concessionarias(FK)|
-| id_concessionarias(FK)|   | data_inclusao   |
-| data_inclusao   |        | data_atualizacao|
-| data_atualizacao|        +-----------------+
-+-----------------+
-
-+-----------------+
-|   DIM_VEICULOS  |
-+-----------------+
-| id_veiculos(PK) |
-| nome            |
-| tipo            |
-| valor           |
-| data_inclusao   |
-| data_atualizacao|
-+-----------------+
-
-                *
-                |
-                1
-+-----------------+
-|   FCT_VENDAS    |
-+-----------------+
-| id_vendas (PK)  |
-| id_veiculos(FK) |
-| id_concessionarias(FK) |
-| id_vendedores(FK) |
-| id_clientes(FK) |
-| valor_venda     |
-| data_venda      |
-| data_inclusao   |
-| data_atualizacao|
-+-----------------+
-
 
 
 ## 📝 Seções do projeto
@@ -257,6 +179,7 @@ data_atualizacao
 | **Snowflake**        | Data Warehouse na nuvem para armazenamento e modelagem de dados |
 | **dbt**              | Transformações, modelagem, testes e documentação dos dados no Snowflake |
 | **Power BI**         | Visualização e análise interativa dos dados modelados |
+
 
 
 
