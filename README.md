@@ -3,7 +3,7 @@
 Este projeto apresenta a construção completa de um **Data Warehouse** para uma **montadora de veículos fictícia**, com foco em aplicar práticas reais de **engenharia de dados**.  
 A empresa simulada possui um **site, sistema e banco de dados “vivo”**, onde novas vendas são geradas em tempo real — o que permite criar pipelines dinâmicos e próximos de um cenário real de produção.
 
-O pipeline integra **PostgreSQL**, **Airflow (na AWS EC2)**, **Snowflake**, **dbt** e **Looker Studio**, formando uma arquitetura moderna e escalável de dados.
+O pipeline integra **PostgreSQL**, **Airflow (na AWS EC2)**, **Snowflake**, **dbt** e **Power BI**, formando uma arquitetura moderna e escalável de dados.
 
 ---
 
@@ -103,5 +103,6 @@ A arquitetura segue o fluxo:
 | **Snowflake**        | Data Warehouse na nuvem para armazenamento e modelagem de dados |
 | **dbt**              | Transformações, modelagem, testes e documentação dos dados no Snowflake |
 | **Power BI**         | Visualização e análise interativa dos dados modelados |
+
 
 
