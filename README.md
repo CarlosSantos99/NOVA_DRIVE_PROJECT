@@ -33,6 +33,7 @@ A arquitetura segue o fluxo:
 ## UML
 
 - Dados em tabela unica Postgres:
+
 id_estados
 estado
 sigla
@@ -56,6 +57,7 @@ data_atualizacao
 data_venda
 
 - Dados em Dimenções e Fatos Snowflake:
+
 DIM_ESTADOS:
 id_estados (PK)
 estado
@@ -112,6 +114,7 @@ data_inclusao
 data_atualizacao
 
 - UML do projeto:
+
 +-----------------+
 |   DIM_ESTADOS   |
 +-----------------+
@@ -267,6 +270,7 @@ data_atualizacao
 | **Snowflake**        | Data Warehouse na nuvem para armazenamento e modelagem de dados |
 | **dbt**              | Transformações, modelagem, testes e documentação dos dados no Snowflake |
 | **Power BI**         | Visualização e análise interativa dos dados modelados |
+
 
 
 
