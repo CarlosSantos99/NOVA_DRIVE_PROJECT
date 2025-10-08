@@ -34,19 +34,14 @@ A arquitetura segue o fluxo:
 
 - Dados no Postgres:
 
-TABELA: ESTADOS | Campos: id_estados, estado, sigla, data_inclusao, data_atualizacao | Descrição: Contém os estados onde há concessionárias cadastradas.
+TABELA: ESTADOS | Campos: id_estados, estado, sigla, data_inclusao, data_atualizacao 
+TABELA: CIDADES | Campos: id_cidades, nome_cidade, id_estados, data_inclusao, data_atualizacao 
+TABELA: CONCESSIONARIAS | Campos: id_concessionarias, nome_concessionaria, id_cidades, data_inclusao, data_atualizacao
+TABELA: CLIENTES | Campos: id_clientes, cliente, endereco, id_concessionarias, data_inclusao, data_atualizacao
+TABELA: VENDEDORES | Campos: id_vendedores, nome_vendedor, id_concessionarias, data_inclusao, data_atualizacao
+TABELA: VEICULOS | Campos: id_veiculos, nome, tipo, valor, data_inclusao, data_atualizacao
+TABELA: VENDAS | Campos: id_vendas, id_clientes, id_vendedores, id_veiculos, valor_venda, data_venda, data_inclusao, data_atualizacao 
 
-TABELA: CIDADES | Campos: id_cidades, nome_cidade, id_estados, data_inclusao, data_atualizacao | Descrição: Lista das cidades associadas a cada estado.
-
-TABELA: CONCESSIONARIAS | Campos: id_concessionarias, nome_concessionaria, id_cidades, data_inclusao, data_atualizacao | Descrição: Armazena informações das concessionárias que vendem veículos.
-
-TABELA: CLIENTES | Campos: id_clientes, cliente, endereco, id_concessionarias, data_inclusao, data_atualizacao | Descrição: Registra os dados dos clientes que realizaram compras.
-
-TABELA: VENDEDORES | Campos: id_vendedores, nome_vendedor, id_concessionarias, data_inclusao, data_atualizacao | Descrição: Cadastra os vendedores vinculados às concessionárias.
-
-TABELA: VEICULOS | Campos: id_veiculos, nome, tipo, valor, data_inclusao, data_atualizacao | Descrição: Armazena os veículos disponíveis para venda.
-
-TABELA: VENDAS | Campos: id_vendas, id_clientes, id_vendedores, id_veiculos, valor_venda, data_venda, data_inclusao, data_atualizacao | Descrição: Histórico de todas as vendas realizadas, com informações de cliente, vendedor e veículo.
 - Dados em Dimenções e Fatos Snowflake:
 
 DIM_ESTADOS:
@@ -262,6 +257,7 @@ data_atualizacao
 | **Snowflake**        | Data Warehouse na nuvem para armazenamento e modelagem de dados |
 | **dbt**              | Transformações, modelagem, testes e documentação dos dados no Snowflake |
 | **Power BI**         | Visualização e análise interativa dos dados modelados |
+
 
 
 
