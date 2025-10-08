@@ -115,86 +115,79 @@ data_atualizacao
 
 - UML do projeto:
 
-+-----------------+
-|   DIM_ESTADOS   |
-+-----------------+
-| id_estados (PK) |
-| estado          |
-| sigla           |
-| data_inclusao   |
-| data_atualizacao|
-+-----------------+
-
++---------------------------+
+|        DIM_ESTADOS        |
++---------------------------+
+| id_estados : INT (PK)     |
+| estado : VARCHAR(100)     |
+| sigla : CHAR(2)           |
+| data_inclusao : DATE      |
+| data_atualizacao : DATE   |
++---------------------------+
            1
-           |
-           | 
-           * 
-+-----------------+
-|   DIM_CIDADES   |
-+-----------------+
-| id_cidades (PK) |
-| nome_cidade     |
-| id_estados (FK) |
-| data_inclusao   |
-| data_atualizacao|
-+-----------------+
-
-           1
-           |
            |
            *
-+-------------------------+
-|   DIM_CONCESSIONARIAS   |
-+-------------------------+
-| id_concessionarias (PK) |
-| nome_concessionaria     |
-| id_cidades (FK)         |
-| data_inclusao           |
-| data_atualizacao        |
-+-------------------------+
-
++---------------------------+
+|        DIM_CIDADES        |
++---------------------------+
+| id_cidades : INT (PK)     |
+| nome_cidade : VARCHAR(100)|
+| id_estados : INT (FK)     |
+| data_inclusao : DATE      |
+| data_atualizacao : DATE   |
++---------------------------+
+           1
+           |
+           *
++-------------------------------+
+|     DIM_CONCESSIONARIAS       |
++-------------------------------+
+| id_concessionarias : INT (PK) |
+| nome_concessionaria : VARCHAR(100) |
+| id_cidades : INT (FK)         |
+| data_inclusao : DATE          |
+| data_atualizacao : DATE       |
++-------------------------------+
         1          1
         |          |
-        |          |
         *          *
-+-----------------+        +-----------------+
-|   DIM_CLIENTES  |        |  DIM_VENDEDORES |
-+-----------------+        +-----------------+
-| id_clientes(PK) |        | id_vendedores(PK)|
-| cliente         |        | nome_vendedor    |
-| endereco        |        | id_concessionarias(FK)|
-| id_concessionarias(FK)|   | data_inclusao   |
-| data_inclusao   |        | data_atualizacao|
-| data_atualizacao|        +-----------------+
-+-----------------+
++-------------------------------+        +-------------------------------+
+|        DIM_CLIENTES           |        |      DIM_VENDEDORES           |
++-------------------------------+        +-------------------------------+
+| id_clientes : INT (PK)        |        | id_vendedores : INT (PK)      |
+| cliente : VARCHAR(150)        |        | nome_vendedor : VARCHAR(100)  |
+| endereco : VARCHAR(200)       |        | id_concessionarias : INT (FK) |
+| id_concessionarias : INT (FK) |        | data_inclusao : DATE          |
+| data_inclusao : DATE          |        | data_atualizacao : DATE       |
+| data_atualizacao : DATE       |        +-------------------------------+
++-------------------------------+
 
-+-----------------+
-|   DIM_VEICULOS  |
-+-----------------+
-| id_veiculos(PK) |
-| nome            |
-| tipo            |
-| valor           |
-| data_inclusao   |
-| data_atualizacao|
-+-----------------+
-
++---------------------------+
+|       DIM_VEICULOS        |
++---------------------------+
+| id_veiculos : INT (PK)    |
+| nome : VARCHAR(100)       |
+| tipo : VARCHAR(50)        |
+| valor : DECIMAL(10,2)     |
+| data_inclusao : DATE      |
+| data_atualizacao : DATE   |
++---------------------------+
                 *
                 |
                 1
-+-----------------+
-|   FCT_VENDAS    |
-+-----------------+
-| id_vendas (PK)  |
-| id_veiculos(FK) |
-| id_concessionarias(FK) |
-| id_vendedores(FK) |
-| id_clientes(FK) |
-| valor_venda     |
-| data_venda      |
-| data_inclusao   |
-| data_atualizacao|
-+-----------------+
++-------------------------------+
+|        FCT_VENDAS             |
++-------------------------------+
+| id_vendas : INT (PK)          |
+| id_veiculos : INT (FK)        |
+| id_concessionarias : INT (FK) |
+| id_vendedores : INT (FK)      |
+| id_clientes : INT (FK)        |
+| valor_venda : DECIMAL(10,2)   |
+| data_venda : DATE             |
+| data_inclusao : DATE          |
+| data_atualizacao : DATE       |
++-------------------------------+
 
 
 ## 📝 Seções do projeto
@@ -270,6 +263,7 @@ data_atualizacao
 | **Snowflake**        | Data Warehouse na nuvem para armazenamento e modelagem de dados |
 | **dbt**              | Transformações, modelagem, testes e documentação dos dados no Snowflake |
 | **Power BI**         | Visualização e análise interativa dos dados modelados |
+
 
 
 
