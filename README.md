@@ -104,7 +104,4 @@ A arquitetura segue o fluxo:
 | **dbt**              | Transformações, modelagem, testes e documentação dos dados no Snowflake |
 | **Power BI**         | Visualização e análise interativa dos dados modelados |
 
----
-
-## 🗂️ Estrutura do projeto no GitHub
 
