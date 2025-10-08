@@ -124,9 +124,11 @@ data_atualizacao
 | data_inclusao   |
 | data_atualizacao|
 +-----------------+
+
            1
            |
-           *
+           | 
+           * 
 +-----------------+
 |   DIM_CIDADES   |
 +-----------------+
@@ -136,7 +138,9 @@ data_atualizacao
 | data_inclusao   |
 | data_atualizacao|
 +-----------------+
+
            1
+           |
            |
            *
 +-------------------------+
@@ -148,7 +152,9 @@ data_atualizacao
 | data_inclusao           |
 | data_atualizacao        |
 +-------------------------+
+
         1          1
+        |          |
         |          |
         *          *
 +-----------------+        +-----------------+
@@ -172,6 +178,7 @@ data_atualizacao
 | data_inclusao   |
 | data_atualizacao|
 +-----------------+
+
                 *
                 |
                 1
@@ -264,6 +271,7 @@ data_atualizacao
 | **Snowflake**        | Data Warehouse na nuvem para armazenamento e modelagem de dados |
 | **dbt**              | Transformações, modelagem, testes e documentação dos dados no Snowflake |
 | **Power BI**         | Visualização e análise interativa dos dados modelados |
+
 
 
 
